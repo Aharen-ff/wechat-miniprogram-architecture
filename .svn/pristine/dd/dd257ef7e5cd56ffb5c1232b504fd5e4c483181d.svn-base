@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/home",
+    "pages/demo/ui/uiLibrary",
+    "pages/demo/sendRequest/sendRequest",
+    "pages/animation/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Playground",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

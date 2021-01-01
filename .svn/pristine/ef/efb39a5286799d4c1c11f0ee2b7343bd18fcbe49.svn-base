@@ -1,0 +1,12 @@
+<view class="mobile-app-container" bindtap="onSwtich">
+  <view class="btn-container fixed">
+    <view class="btn large primary {{ switch ? 'collapse' : '' }}" style="margin-top:10px;">
+      <span wx:if="{{ !switch }}">开关</span>
+      <image wx:else style="width:24px;height:24px;background-color:red;"></image>
+    </view>
+    <view class="btn large normal {{ switch ? '' : 'collapse' }}" style="margin-top:10px;">
+      <span wx:if="{{ switch }}">开关</span>
+      <image wx:else style="width:24px;height:24px;background-color:red;margin-top:3px;"></image>
+    </view>
+  </view>
+</view>

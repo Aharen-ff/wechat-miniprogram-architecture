@@ -1,0 +1,23 @@
+/**
+ * @file 配置文件
+ */
+
+/**
+ * 环境枚举值，对应 ./server.js
+ * @readonly
+ * @enum {string}
+ */
+const envEnum = ['Dev', 'Test', 'Prod'];
+
+const config = {}
+
+/** 环境配置，上传版本前需检查 */
+config.env = 'Test';
+
+/** 应用配置 */
+config.app = 'ColdChain';
+
+/** 调试配置，会覆盖所有 api 的 server */
+config.debugServer = null;
+
+module.exports = config;

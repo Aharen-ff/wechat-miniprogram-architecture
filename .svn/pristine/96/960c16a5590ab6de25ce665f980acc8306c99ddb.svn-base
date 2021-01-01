@@ -1,0 +1,160 @@
+/* 
+  列表样式
+  定义：
+    - list-block-item 块状列表，例如单据列表
+      block-item 不能聚合，每个 item 占一个独立的块
+    - list-line-item 单行列表，例如单据详情 -> 商品详情
+      line-item 必须依赖 list-line-group 聚合成一个块，
+      一个块内可以有多个 line-item
+*/
+
+.list-block-item,
+.list-line-group {
+  background-color: white;
+}
+
+.list-block-item + .list-block-item,
+.list-line-group + .list-line-group {
+  margin-top: 10px;
+}
+
+/* 块状 - 头部 */
+.list-block-item > .header {
+  margin: 0 10px;
+  padding: 13px 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.list-block-item > .header text,
+.list-block-item > .footer text,
+.list-line-group > .list-line-item text {
+  display: inline-block;
+}
+
+/* 块状 - 头部 - 标题 */
+.list-block-item > .header > .title {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 块状 - 头部 - 标签 */
+.list-block-item > .header > .tag {
+  color: white;
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-left: 6px;
+  background-color: var(--primary-color);
+}
+
+/* 块状 - 头部 - 次要信息 */
+.list-block-item > .header > .sub-info {
+  color: #808080;
+  font-size: 14px;
+  margin-left: 6px;
+}
+
+/* 块状 - 头部 - 控制按钮（可在页面定制，全局提供展开按钮） */
+.list-block-item > .header > .controller.expand-switch {
+  position: relative;
+  width: 24px;
+  height: 22px;
+}
+
+.header > .controller.expand-switch::after {
+  position: absolute;
+  top: -13px;
+  content: "";
+  display: block;
+  width: 34px;
+  height: 48px;
+}
+
+.controller.expand-switch image {
+  position: absolute;
+  margin: auto;
+  right: 4px;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  transition: all 0.2s ease;
+}
+
+.controller.expand-switch.expand image {
+  transform: rotate(-90deg);
+}
+
+.controller.expand-switch.collapse image {
+  transform: rotate(90deg);
+}
+
+/* 块状 - 区块分割线 */
+.list-block-item > .header + .body {
+  border-top: 1px solid #f2f2f2;
+}
+
+.list-block-item > .body + .footer {
+  border-top: 1px solid #f2f2f2;
+}
+
+/* 块状 - 注脚 */
+.list-block-item > .footer {
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* 单行 */
+.list-line-group {
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.list-line-group > .list-line-item {
+  padding: 13px 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.list-line-group > .list-line-item + .list-line-item {
+  border-top: 1px solid #f2f2f2;
+}
+
+/* 单行 - 标题 */
+.list-line-group > .list-line-item > .title {
+  width: 120px;
+  color: #808080;
+}
+
+.list-line-group > .list-line-item > .title.spread {
+  width: initial;
+  flex: 1;
+  flex-shrink: 1;
+}
+
+.list-line-group > .list-line-item > .title.collapse {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 单行 - 内容 */
+.list-line-group > .list-line-item > .title + .content {
+  margin-left: 8px;
+}
+
+.list-line-group > .list-line-item > .content {
+  flex: 1;
+  max-width: 220px;
+  text-align: right;
+}
+
+.list-line-group > .list-line-item > .content  input {
+  flex: 1;
+  height: 20px;
+  min-height: initial;
+  text-align: right;
+}

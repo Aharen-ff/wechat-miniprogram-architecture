@@ -1,0 +1,141 @@
+import config, { env, app, debugServer } from '../configs/config';
+import { getServer } from '../configs/server';
+
+const header = {
+  get: { 'Content-Type': 'application/json' },
+  post: { 'Content-Type': 'application/x-www-form-urlencoded' },
+};
+
+class Http {
+  /**
+   * @private
+   */
+  errMsgMap = {
+    500: '500: 服务器内部错误',
+    404: '404: 资源不存在',
+  }
+
+  constructor() {
+    this.token = wx.getStorageSync('key-user-ticket').ecafeToken;
+    this.svr = 'gz'; // @TODO 这里的 svr 要么在 config 中管理，要么从缓存中取
+  }
+
+  /**
+   * 请求拦截器，预处理参数
+   * @private
+   * @param {object} conf 配置项
+   * @returns {object}
+   */
+  reqInterceptor(conf) {
+    const configs = {
+      method: 'get', // 默认 get
+      env, // 默认 config.js 中配置的环境
+      app, // 默认 config.js 中配置的应用
+      svr: this.svr, // 默认 svr
+      ...conf,
+    };
+
+    if (!configs.params) {
+      configs.params = {};
+    }
+
+    // 可以在 config.js 中配置调试服务地址，覆盖掉所有服务设置
+    const server = debugServer || getServer(configs.env)(configs.app);
+    configs.url = `${server}${configs.api}&ecafeNotRedirect=true`;
+
+    // 部分请求不需要携带 ecafeToken
+    if (!configs.noToken) {
+      configs.params.ecafeToken = this.token;
+    }
+
+    // 部分请求不需要携带 svr
+    if (!configs.noSvr) {
+      configs.url += `&svr=${configs.svr}`
+    }
+
+    const paramStr = this.json2Form(configs.params);
+    if (configs.method === 'get' && JSON.stringify(configs.params) !== '{}') {
+      configs.url += `&${paramStr}`;
+    } else if (configs.method === 'post') {
+      configs.data = paramStr;
+    }
+
+    configs.header = header[configs.method];
+
+    return configs;
+  }
+
+  /**
+   * 响应拦截器，预处理响应数据
+   * @private
+   * @param {object} res 响应
+   * @returns {object}
+   */
+  resInterceptor(res) {
+    // 把各种错误信息放到自定义的 errorMessage 中，方便外部直接使用
+    const errorMessage = this.errMsgMap[res.statusCode]
+      || (res.data && res.data.message)
+      || '出错了';
+
+    return { ...res, errorMessage };
+  }
+
+  /**
+   * 请求主体
+   * @param {object} conf 配置项
+   * @returns {Promise}
+   */
+  request(conf) {
+    const configs = this.reqInterceptor(conf);
+
+    if (configs.noPromise) {
+      return configs.url;
+    }
+
+    return new Promise((resolve, reject) => {
+      wx.request({
+        ...configs,
+        success: (res) => {
+          this.callback(res, resolve, reject);
+        },
+        fail: (err) => {
+          const error = this.resInterceptor(err);
+          reject(error);
+        },
+      });
+    });
+  }
+
+  /**
+   * 回调
+   * @private
+   * @param {object} res
+   * @param {function} resolve
+   * @param {function} reject
+   */
+  callback(res, resolve, reject) {
+    // 请求成功
+    if (res.statusCode === 200 && res.data.code === '0') {
+      resolve(res.data);
+    }
+
+    // 其他情况
+    const error = this.resInterceptor(res);
+    reject(error);
+  }
+
+  /**
+   * 格式化请求参数
+   * @private
+   * @param {object} param
+   */
+  json2Form(param) {
+    const paramArr = [];
+    for (const key in param) {
+      paramArr.push(`${encodeURIComponent(key)}=${encodeURIComponent(param[key])}`);
+    }
+    return paramArr.join('&');
+  }
+};
+
+export { Http };

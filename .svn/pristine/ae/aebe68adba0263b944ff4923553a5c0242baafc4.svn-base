@@ -1,0 +1,5 @@
+/**
+ * @file 存储 Storage 的键
+ */
+
+const keys = {};

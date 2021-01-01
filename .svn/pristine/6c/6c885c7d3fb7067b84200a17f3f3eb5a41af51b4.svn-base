@@ -1,0 +1,11 @@
+Page({
+  data: {
+    switch: false,
+  },
+
+  onSwtich() {
+    this.setData({
+      switch: !this.data.switch,
+    });
+  },
+})

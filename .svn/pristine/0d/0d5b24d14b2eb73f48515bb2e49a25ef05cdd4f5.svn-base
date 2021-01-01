@@ -1,0 +1,13 @@
+export const appMap = {
+  'wxe4b2b88461fd82f4': 'cold-chain_enterprise',
+  'wxe4b2b88461fd82f3': 'cold-chain_supervisor',
+};
+
+export const svrMap = {
+  test: {
+    'cold-chain': 'https://ccsy.id-cas.cn',
+  },
+  prod: {
+    'cold-chain': 'https://ccsy.fsiscas.com',
+  },
+};

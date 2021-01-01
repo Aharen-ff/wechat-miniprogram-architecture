@@ -1,0 +1,79 @@
+.entry-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px 10px;
+  margin-top: 10px;
+}
+
+.entry-container .entry {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  border-radius: 8px;
+  background-color: lightgrey;
+  overflow: hidden;
+}
+
+.entry::after {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: block;
+  content: "";
+}
+
+.entry image {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  z-index: 0;
+}
+
+.entry text {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  color: white;
+  width: inherit;
+  text-align: center;
+  font-size: 28px;
+  line-height: 120px;
+}
+
+.entry:nth-child(9n+0) {
+  background-color: lightgreen;
+}
+
+.entry:nth-child(9n+1) {
+  background-color: lightpink;
+}
+
+.entry:nth-child(9n+2) {
+  background-color: lightsalmon;
+}
+
+.entry:nth-child(9n+3) {
+  background-color: lightseagreen;
+}
+
+.entry:nth-child(9n+4) {
+  background-color: lightskyblue;
+}
+
+.entry:nth-child(9n+5) {
+  background-color: lightblue;
+}
+
+.entry:nth-child(9n+6) {
+  background-color: lightcoral;
+}
+
+.entry:nth-child(9n+7) {
+  background-color: lightslategrey;
+}
+
+.entry:nth-child(9n+8) {
+  background-color: lightgoldenrodyellow;
+}

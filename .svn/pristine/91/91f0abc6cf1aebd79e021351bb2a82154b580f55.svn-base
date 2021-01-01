@@ -1,0 +1,31 @@
+const pageList = [
+  { text: '列表', value: 'list-mode' },
+  { text: '信息', value: 'form-view-mode' },
+  { text: '表单', value: 'form-edit-mode' },
+  { text: '入口', value: 'entry-mode' },
+];
+
+Page({
+  data: {
+    pageList,
+  },
+
+  onLoad() {
+    wx.setNavigationBarTitle({ title: 'UI Library' });
+    const { needSafeBottom } = getApp().globalData;
+    const curMode = this.data.pageList[0].value;
+
+    this.setData({
+      needSafeBottom,
+      curMode,
+    });
+  },
+
+  changeTab(e) {
+    const curMode = e.currentTarget.dataset.value;
+    this.setData({
+      curMode,
+    });
+  },
+
+});

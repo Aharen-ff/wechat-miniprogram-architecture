@@ -1,0 +1,3 @@
+.btn-container .btn.large.collapse {
+  max-width: 48px;
+}

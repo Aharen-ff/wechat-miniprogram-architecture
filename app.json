@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/home/index"
+  ],
+  "subpackages": [
+    {
+      "root": "packages/user",
+      "pages": [
+        "pages/index"
+      ]
+    },
+    {
+      "root": "packages/map",
+      "pages": [
+        "pages/index"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Playground",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

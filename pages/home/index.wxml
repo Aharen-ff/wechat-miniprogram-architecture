@@ -1,0 +1,14 @@
+<view class="mobile-app-container">
+  <button
+    type="primary"
+    bindtap="bindUserTap"
+  >跳转用户模块</button>
+  <button
+    type="primary"
+    bindtap="bindMapTap"
+  >跳转地图模块</button>
+  <button
+    type="primary"
+    bindtap="bindScanTap"
+  >跳转扫码模块</button>
+</view>

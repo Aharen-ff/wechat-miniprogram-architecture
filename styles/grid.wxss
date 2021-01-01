@@ -1,0 +1,7 @@
+/* 双列瀑布流 */
+.waterfall {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  row-gap: 10px;
+  column-gap: 10px;
+}

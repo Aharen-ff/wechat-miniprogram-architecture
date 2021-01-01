@@ -1,0 +1,14 @@
+<view class="mobile-app-container">
+  <input
+    placeholder="经度"
+    value="{{ lat }}"
+    bindinput="bindInput"
+    id="lat"
+  />
+  <input
+    placeholder="纬度"
+    value="{{ lng }}"
+    bindinput="bindInput"
+    id="lng"
+  />
+</view>

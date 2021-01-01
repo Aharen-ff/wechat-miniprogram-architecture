@@ -1,0 +1,19 @@
+class Parent {
+  name = 'public parent name';
+  #sname = 'private parent name';
+
+  say() {
+    console.log(this.name);
+    console.log(this.#sname);
+  }
+
+  get sname() {
+    return this.#sname;
+  }
+
+  set sname(sname) {
+    this.#sname = sname;
+  }
+};
+
+export { Parent };

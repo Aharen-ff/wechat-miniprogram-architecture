@@ -1,0 +1,7 @@
+import { Common } from './common';
+
+class ColdChain extends Common {
+
+}
+
+export { ColdChain };

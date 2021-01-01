@@ -1,0 +1,224 @@
+<view class="mobile-app-container {{ needSafeBottom ? 'with-safe-bottom' : '' }}">
+  <view class="header">
+    <view class="avatar">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="nickname">
+      <open-data type="userNickName"></open-data>
+    </view>
+  </view>
+
+  <view class="tab-container page-level">
+    <view bindtap="changeTab" data-value="{{ item.value }}"
+      class="tab {{ curMode === item.value ? 'active' : '' }}" wx:for="{{ pageList }}"
+      wx:key="value">{{ item.text }}</view>
+  </view>
+
+  <view class="page-container" wx:if="{{ curMode === 'list-mode' }}">
+    <view class="card clickable list-block-item">
+      <view class="header">
+        <text class="title">结合卡片样式</text>
+        <text class="tag">标签一</text>
+        <text class="tag failure">标签二</text>
+        <text class="sub-info">2020/01/01</text>
+        <view class="controller expand-switch expand">
+          <image src="/assets/icons/navto_808080.png"></image>
+        </view>
+      </view>
+      <view class="body" style="padding:10px;background-color:lightcoral;color:white;">
+        全局只提供 header 和 footer 的样式，body 部分在页面实现
+      </view>
+      <view class="footer">
+        <text>脚注</text>
+      </view>
+    </view>
+    <view class="card clickable list-block-item">
+      <view class="header">
+        <text class="title">标题超出长度会自动折叠隐藏</text>
+        <text class="tag">标签</text>
+        <text class="sub-info">2020/01/01</text>
+        <view class="controller expand-switch collapse">
+          <image src="/assets/icons/navto_808080.png"></image>
+        </view>
+      </view>
+      <view class="body" style="display:none;"></view>
+      <view class="footer" style="display:none;"></view>
+    </view>
+    <view class="card clickable list-block-item">
+      <view class="header">
+        <text class="title">标签、次要信息和展开按钮是可选的</text>
+      </view>
+      <view class="body" style="padding:10px;background-color:lightcoral;color:white;">
+        内容
+      </view>
+    </view>
+    <view class="list-block-item" style="margin-top:10px;">
+      <view class="header">
+        <text class="title">可以不依赖卡片</text>
+        <text class="tag">标签一</text>
+        <text class="tag failure">标签二</text>
+        <text class="sub-info">2020/01/01</text>
+        <view class="controller expand-switch expand">
+          <image src="/assets/icons/navto_808080.png"></image>
+        </view>
+      </view>
+      <view class="body" style="padding:10px;background-color:lightcoral;color:white;">
+        全局只提供 header 和 footer 的样式，body 部分在页面实现
+      </view>
+      <view class="footer">
+        <text>脚注</text>
+      </view>
+    </view>
+    <view class="list-block-item">
+      <view class="header">
+        <text class="title">标题超出长度会自动折叠隐藏</text>
+        <text class="tag">标签</text>
+        <text class="sub-info">2020/01/01</text>
+        <view class="controller expand-switch collapse">
+          <image src="/assets/icons/navto_808080.png"></image>
+        </view>
+      </view>
+      <view class="body" style="display:none;"></view>
+      <view class="footer" style="display:none;"></view>
+    </view>
+  </view>
+
+  <view class="page-container" wx:elif="{{ curMode === 'form-view-mode' }}">
+    <view class="card list-line-group">
+      <view class="list-line-item">
+        <text class="title" style="background-color:lightcoral;color:white;">标题固定长度</text>
+        <text class="content">颜色仅作演示</text>
+      </view>
+      <view class="list-line-item">
+        <text class="title spread" style="background-color:lightcoral;color:white;">标题自动占据剩余空间</text>
+      </view>
+      <view class="list-line-item">
+        <text class="title">固定长度下超长标题自动换行</text>
+        <text class="content">这是内容部分的文字，内容</text>
+      </view>
+      <view class="list-line-item">
+        <text class="title spread collapse">超长不换行，折叠溢出部分</text>
+        <text class="content">这是内容部分的文字</text>
+      </view>
+      <view class="list-line-item">
+        <text class="title spread collapse">超长不换行，折叠溢出部分</text>
+        <text class="content">这是内容部分的文字，超长会自动换行</text>
+      </view>
+    </view>
+    <view class="card list-line-group">
+      <view class="list-line-item">
+        <text class="title">商品名</text>
+        <text class="content">麻斑</text>
+      </view>
+      <view class="list-line-item">
+        <text class="title">规格</text>
+        <text class="content">45kg/件</text>
+      </view>
+      <view class="list-line-item">
+        <text class="title">件数</text>
+        <text class="content">8件</text>
+      </view>
+      <view class="list-line-item">
+        <text class="title">重量</text>
+        <text class="content">360kg</text>
+      </view>
+    </view>
+    <view style="margin:20px 0 0;padding:10px 20px;background-color:lightcoral;color:#fff;">
+      可搭配小标题组成信息块。小标题在各页面单独实现，不提供全局样式。
+    </view>
+    <view style="padding:10px 20px;">
+      <text>供货方信息</text>
+      <text style="float:right;color:#808080;font-size:14px;margin-top:3px;">展开</text>
+    </view>
+    <view class="card list-line-group">
+      <view class="list-line-item">
+        <text class="title">供应商</text>
+        <text class="content">胜记冷库</text>
+      </view>
+      <view class="list-line-item">
+        <text class="title">联系人</text>
+        <text class="content">阿胜</text>
+      </view>
+      <view class="list-line-item">
+        <text class="title">联系电话</text>
+        <text class="content">19921341234</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="page-container" wx:elif="{{ curMode === 'form-edit-mode' }}">表单</view>
+
+  <view class="page-container" wx:else>入口</view>
+  <!-- <view class="h1" style="margin-left:20px;line-height:48px;">UI参考</view>
+  <view class="hint" style="margin-left:20px;line-height:36px;color:#808080;">卡片式行入口</view>
+  <view class="entry-container">
+    <view class="entry-group card">
+      <view class="line-entry">
+        <image class="icon" style="background-color:lightcoral;"></image>
+        <text>单入口</text>
+        <image class="hint" src="/assets/icons/navto_808080.png"></image>
+      </view>
+    </view>
+    <view class="entry-group card">
+      <view class="line-entry">
+        <image class="icon" style="background-color:lightcoral;"></image>
+        <text>多入口一</text>
+        <image class="hint" src="/assets/icons/navto_808080.png"></image>
+      </view>
+      <view class="line-entry">
+        <image class="icon" style="background-color:lightcoral;"></image>
+        <text>多入口二</text>
+        <image class="hint" src="/assets/icons/navto_808080.png"></image>
+      </view>
+      <view class="line-entry">
+        <image class="icon" style="background-color:lightcoral;"></image>
+        <text>多入口三</text>
+        <image class="hint" src="/assets/icons/navto_808080.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="hint" style="margin-left:20px;line-height:36px;color:#808080;">非卡片式行入口</view>
+  <view class="entry-container">
+    <view class="entry-group">
+      <view class="line-entry">
+        <image class="icon" style="background-color:lightcoral;"></image>
+        <text>单入口</text>
+        <image class="hint" src="/assets/icons/navto_808080.png"></image>
+      </view>
+    </view>
+    <view class="entry-group">
+      <view class="line-entry">
+        <image class="icon" style="background-color:lightcoral;"></image>
+        <text>多入口一</text>
+        <image class="hint" src="/assets/icons/navto_808080.png"></image>
+      </view>
+      <view class="line-entry">
+        <image class="icon" style="background-color:lightcoral;"></image>
+        <text>多入口二</text>
+        <image class="hint" src="/assets/icons/navto_808080.png"></image>
+      </view>
+      <view class="line-entry">
+        <image class="icon" style="background-color:lightcoral;"></image>
+        <text>多入口三</text>
+        <image class="hint" src="/assets/icons/navto_808080.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="hint" style="margin-left:20px;line-height:36px;color:#808080;">按钮组</view>
+  <view class="btn large primary">主要</view>
+  <view class="btn large success">成功</view>
+  <view class="btn large warning">警告</view>
+  <view class="btn large failure">严重警告</view>
+  <view class="btn large normal">常规</view>
+
+  <view class="hint" style="margin-left:20px;line-height:36px;color:#808080;">使用 btn-container
+    包裹的按钮会横向排列</view>
+  <view class="hint" style="margin-left:20px;line-height:36px;color:#808080;">见悬停按钮</view>
+
+  <view class="btn-container fixed {{ needSafeBottom ? 'with-safe-bottom' : '' }}">
+    <view class="btn large primary">主要</view>
+    <view class="btn large warning disabled">禁用</view>
+  </view> -->
+</view>
+<view class="bottom-blur"></view>

@@ -1,0 +1,13 @@
+class Form {
+  validate() {
+    return null;
+  }
+
+  format() {
+    return {};
+  }
+
+  submit() { }
+}
+
+export { Form };

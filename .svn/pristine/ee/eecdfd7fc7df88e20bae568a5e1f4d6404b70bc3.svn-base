@@ -1,0 +1,24 @@
+const entryList = [
+  { label: 'UI参考', url: './demo/ui/uiLibrary' },
+  { label: '发送请求', url: './demo/sendRequest/sendRequest' },
+  { label: '动效', url: './animation/index' },
+];
+
+Page({
+  data: {
+    entryList,
+  },
+
+  onLoad() {
+    const { needSafeBottom } = getApp().globalData;
+
+    this.setData({
+      needSafeBottom,
+    });
+  },
+
+  enter(e) {
+    const { url } = e.currentTarget.dataset;
+    wx.navigateTo({ url });
+  },
+});

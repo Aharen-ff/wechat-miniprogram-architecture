@@ -1,0 +1,59 @@
+import { ColdChain } from '../../../apis/coldChain';
+const request = new ColdChain();
+
+Page({
+  onLoad() {
+    this.doRequest();
+  },
+
+  async doRequest() {
+    /**
+     * 多种使用方式满足不同场景
+     */
+
+    // 方式一：普通使用
+    request.login({
+      username: 'S333',
+      password: '123456',
+    }).then(
+      (res) => {
+        console.log('login success!', res);
+      },
+      (err) => {
+        console.log('login fail!', err);
+      },
+    );
+    console.log('normal way'); // 这一句会先于 login success 被打印出来
+
+    // 方式二：同步
+    // 适用场景：层层嵌套
+    try {
+      const res = await request.login({ username: 'S88888888888', password: '123456' });
+      console.log('await login success!', res);
+    } catch (e) {
+      console.log('await exception!', e);
+    }
+    console.log('await way'); // 这一句会在 await login success 之后打印
+
+    // 方式三：并行且不允许任一失败
+    const p1 = request.login({ username: 'S333', password: '123456' });
+    const p2 = request.login({ username: 'S444', password: '123456' }); // wrong username
+    const p3 = request.login({ username: 'S333', password: '123456' });
+    Promise.all([p1, p2]).then(
+      (res) => {
+        console.log('all done!', res);
+      },
+      (err) => {
+        console.log('something wrong!', err);
+      },
+    );
+    Promise.all([p1, p3]).then(
+      (res) => {
+        console.log('all done!', res);
+      },
+      (err) => {
+        console.log('something wrong!', err);
+      },
+    );
+  },
+});

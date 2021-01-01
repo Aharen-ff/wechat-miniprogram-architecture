@@ -1,0 +1,88 @@
+/**
+ * 首位补零
+ * @param {number} number
+ */
+const zeroPrefix = (number) => {
+  if ((typeof number) !== 'number' || number <= 0) return false;
+  return number < 10
+    ? `0${number}`
+    : number;
+};
+
+/**
+ * 格式化日期
+ * @param {string|object} date
+ * @param {string} separator
+ */
+const dateFormatter = (separator) => (date = Date.now()) => {
+  const mDate = new Date(date);
+  if (mDate.toString() === 'Invalid Date') return false;
+
+  const year = zeroPrefix(mDate.getFullYear());
+  const month = zeroPrefix(mDate.getMonth() + 1);
+  const day = zeroPrefix(mDate.getDate());
+
+  return `${year}${separator}${month}${separator}${day}`;
+};
+const dashDate = dateFormatter('-');
+const splashDate = dateFormatter('/');
+
+/**
+ * 获取当前月天数
+ * @param {string|object} date
+ */
+const getMonthDayCount = (date = Date.now()) => {
+  const mDate = new Date(date);
+  if (mDate.toString() === 'Invalid Date') return false;
+
+  const currentYear = mDate.getFullYear();
+  const currentMonth = mDate.getMonth() + 1;
+
+  switch (currentMonth) {
+    case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+      return 31;
+    case 4: case 6: case 9: case 11:
+      return 30;
+    case 2:
+      return (currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0
+        ? 29
+        : 28;
+    default:
+      return false;
+  }
+}
+
+/**
+ * 调用 wx.showToast
+ * @param {string} title
+ * @param {number} duration
+ * @param {string} icon
+ */
+const toast = (title = '', duration = 2000, icon = 'none') => {
+  wx.showToast({
+    icon,
+    title,
+    duration,
+  });
+};
+
+/**
+ * 判断是否需要预留底部安全边距
+ * @param {object} systemInfo
+ * @param {string} systemInfo.brand 品牌
+ * @param {string} systemInfo.model 型号
+ */
+const needSafeBottom = ({ brand, model }) => {
+  const brandStr = String(brand);
+  const modelStr = String(model);
+  return brandStr !== 'devtools'
+    && (modelStr.search('iPhone X') !== -1
+      || modelStr.search('iPhone 11') !== -1);
+}
+
+module.exports = {
+  dashDate,
+  splashDate,
+  toast,
+  needSafeBottom,
+};

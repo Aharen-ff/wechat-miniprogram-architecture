@@ -1,0 +1,65 @@
+/* 入口与列表不同，在于入口有点击反馈 */
+
+/* 入口组 */
+.entry-group + .entry-group {
+  margin-top: 10px;
+}
+
+/* 行式入口 */
+.line-entry {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 10px;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.entry-group.card .line-entry:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.entry-group.card .line-entry:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.line-entry:active {
+  background-color: var(--normal-button-active-color);
+}
+
+.line-entry::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+  height: 60px;
+}
+
+.line-entry + .line-entry {
+  border-top: 1px solid #f2f2f2;
+}
+
+.line-entry .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.line-entry .icon + text {
+  margin-left: 10px;
+}
+
+.line-entry text {
+  flex: 1;
+  display: inline-block;
+  line-height: 20px;
+}
+
+.line-entry .hint {
+  width: 10px;
+  height: 10px;
+}

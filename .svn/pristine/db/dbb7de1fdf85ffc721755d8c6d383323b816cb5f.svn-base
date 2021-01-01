@@ -1,0 +1,17 @@
+import { Parent } from './parent';
+
+class Child extends Parent {
+  cname = 'public child name';
+  #scname = 'private child name';
+
+  childSay() {
+    console.log(this.cname);
+    console.log(this.#scname);
+  }
+
+  sayParent() {
+    console.log(this.sname);
+  }
+};
+
+export { Child };

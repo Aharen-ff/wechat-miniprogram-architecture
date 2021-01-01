@@ -1,0 +1,21 @@
+class Product {
+  /**
+   * 校验合法性
+   * @returns {null|string} 不通过时返回失败信息
+   */
+  validate() {
+    return null;
+  }
+
+  /**
+   * 构建提交用的对象
+   * @returns {object} 构建完毕的对象
+   */
+  format() {
+    // 有些时候前端的数据结构和接口的不一致
+    // 使用这个方法来构建恰当的对象
+    return {};
+  }
+}
+
+export { Product };

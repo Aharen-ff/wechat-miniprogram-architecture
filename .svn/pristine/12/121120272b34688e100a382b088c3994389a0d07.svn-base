@@ -1,0 +1,39 @@
+import { Form } from './form';
+
+class PurchaseForm extends Form {
+  businessmanId = null; // 商户 id
+  boothId = null; // 档口 id
+  brokerage = null; // 经手人
+  formType = null; // 表单类型
+  formDate = null; // 日期
+  contactId = null; // 联系人 id
+  productList = []; // 商品明细
+  accessCertificateIds = []; // 证明材料
+
+  validate() {
+    const errMsg = super.validate();
+    if (errMsg) {
+      return errMsg;
+    }
+
+    if (!this.accessCertificateIds) {
+      return `请上传证明材料`;
+    }
+
+    for (const product of this.productList) {
+      if (product.validate && product.validate()) {
+        return product.validate();
+      }
+    }
+
+    return null;
+  }
+
+  format() {
+    return {
+      ...super.format(),
+    };
+  }
+};
+
+export { PurchaseForm };

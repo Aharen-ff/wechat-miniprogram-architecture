@@ -1,0 +1,11 @@
+<view class="mobile-app-container">
+  <editor
+    lat="{{ lat }}"
+    lng="{{ lng }}"
+    bind:on-edit="onEdit"
+  />
+  <button
+    bindtap="bindRequest"
+    type="primary"
+  >发送请求</button>
+</view>

@@ -1,0 +1,54 @@
+.mobile-app-container > .header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: var(--primary-color);
+  z-index: 10;
+}
+
+.header .avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.avatar + .nickname {
+  margin-left: 20px;
+}
+
+.header .nickname {
+  color: white;
+  font-size: 24px;
+}
+
+.tab-container {
+  position: fixed;
+  top: 104px;
+  z-index: 10;
+}
+
+.page-container {
+  padding-top: 162px;
+  padding-bottom: 10px;
+}
+
+.list-item > .header > .tag.failure {
+  background-color: var(--failure-color);
+}
+
+.card > .body {
+  padding: 10px;
+}
+
+.bottom-blur {
+  width: 200%;
+  height: 200px;
+  backdrop-filter: blur(10px);
+  position: fixed;
+  bottom: 0;
+}

@@ -1,0 +1,10 @@
+<view class="mobile-app-container">
+  <button
+    bindtap="bindMapTap"
+    type="primary"
+  >跳转地图模块</button>
+  <button
+    bindtap="bindLoginTap"
+    type="warn"
+  >重新登录</button>
+</view>

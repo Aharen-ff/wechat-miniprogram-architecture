@@ -1,0 +1,6 @@
+input {
+  background-color: white;
+  margin: 20px 10px;
+  height: 40px;
+  line-height: 40px;
+}

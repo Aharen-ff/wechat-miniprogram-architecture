@@ -1,0 +1,21 @@
+var splashDate = function (date) {
+  while (date.indexOf('-') !== -1) {
+    date = date.replace('-', '/');
+  }
+  return date;
+}
+
+var dict = {
+  'true': '是',
+  'false': '否',
+};
+
+var translate = function (v) {
+  v = v + '';
+  return dict[v] ? dict[v] : v;
+}
+
+module.exports = {
+  splashDate: splashDate,
+  translate: translate,
+};

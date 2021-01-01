@@ -1,0 +1,19 @@
+<!-- <div>标签在小程序里改成了<view>，性质一样 -->
+<view class="mobile-app-container">
+  <input
+    placeholder="请输入用户名"
+    value="{{ username }}"
+    bindinput="bindInput"
+    id="username"
+  />
+  <input
+    placeholder="请输入密码"
+    value="{{ password }}"
+    bindinput="bindInput"
+    id="password"
+  />
+  <button
+    bindtap="bindLogin"
+    type="primary"
+  >登录</button>
+</view>

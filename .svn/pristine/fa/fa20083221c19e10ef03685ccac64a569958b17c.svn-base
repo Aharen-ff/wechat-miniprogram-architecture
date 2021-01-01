@@ -1,0 +1,32 @@
+/**
+ * @file 服务配置，一般只需要调整 server.DevServers
+ */
+
+const server = {};
+
+/** 开发，联调 */
+server.DevServers = {
+  ColdChain: 'http://172.18.7.112:8089', // xian wei
+  CityTrace: 'http://172.18.7.233:8080', // fang dingfa
+};
+
+/** 测试环境 */
+server.TestServers = {
+  ColdChain: 'https://ccsy.id-cas.cn',
+  CityTrace: 'https://sy.id-cas.cn',
+};
+
+/** 生产环境 */
+server.ProdServers = {
+  ColdChain: 'https://ccsy.fsiscas.com',
+  CityTrace: 'https://public.fsiscas.com',
+};
+
+/**
+ * 获取服务地址
+ * @param {string} env 环境
+ * @returns {(app: string) => string}
+ */
+server.getServer = (env) => (app) => server[`${env}Servers`][app];
+
+module.exports = server;

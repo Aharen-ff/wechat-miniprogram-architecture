@@ -1,0 +1,119 @@
+/* 按钮组，组内的按钮会单行排列 */
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  padding: 0 10px;
+}
+
+/* 悬停按钮组 */
+.btn-container.fixed {
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  bottom: 10px;
+}
+
+.btn-container.fixed.with-safe-bottom {
+  bottom: 34px;
+}
+
+/* 按钮 */
+.btn {
+  text-align: center;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.btn-container .btn {
+  margin: 0;
+}
+
+.btn.large + .btn.large {
+  margin-top: 10px;
+}
+
+.btn-container .btn.large + .btn.large {
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+/* 大按钮 */
+.btn.large {
+  height: 30px;
+  padding: 9px 0;
+  border-radius: 30px;
+  line-height: 30px;
+  max-width: 100%;
+}
+
+.btn.large.primary {
+  color: white;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0px 5px 10px 0px var(--primary-button-shadow-color);
+  transition: all 0.2s ease;
+}
+
+.btn.large.primary:active {
+  background-color: var(--primary-button-active-color);
+}
+
+.btn.large.success {
+  color: white;
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+  box-shadow: 0px 5px 10px 0px var(--success-button-shadow-color);
+  transition: all 0.2s ease;
+}
+
+.btn.large.success:active {
+  background-color: var(--success-button-active-color);
+}
+
+.btn.large.warning {
+  color: white;
+  background-color: var(--warning-color);
+  border-color: var(--warning-color);
+  box-shadow: 0px 5px 10px 0px var(--warning-button-shadow-color);
+  transition: all 0.2s ease;
+}
+
+.btn.large.warning:active {
+  background-color: var(--warning-button-active-color);
+}
+
+.btn.large.failure {
+  color: white;
+  background-color: var(--failure-color);
+  border-color: var(--failure-color);
+  box-shadow: 0px 5px 10px 0px var(--failure-button-shadow-color);
+  transition: all 0.2s ease;
+}
+
+.btn.large.failure:active {
+  background-color: var(--failure-button-active-color);
+}
+
+.btn.large.normal {
+  color: var(--primary-text-color);
+  background-color: white;
+  border-color: white;
+  box-shadow: 0px 5px 10px 0px var(--normal-button-shadow-color);
+  transition: all 0.2s ease;
+}
+
+.btn.large.normal:active {
+  background-color: var(--normal-button-active-color);
+}
+
+.btn.large.disabled {
+  color: white;
+  background-color: var(--disable-color);
+  border-color: var(--disable-color);
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+.btn.large.disabled:active {
+  background-color: var(--disable-color);
+}

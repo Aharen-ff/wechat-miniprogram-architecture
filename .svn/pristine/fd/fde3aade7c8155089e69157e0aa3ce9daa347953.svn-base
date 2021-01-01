@@ -1,0 +1,74 @@
+import { Product } from './product';
+
+class FarmProduct extends Product {
+  addrType = null; // 产地来源，[LOCAL, ENTRANCE]
+  address = null; // 产地
+
+  businessProductId = null; // 主营产品 id
+  myProductName = null; // 主营产品名称
+  productName = null; // 产品名
+  uploadLogoId = null; // 产品图片 id
+  
+  productTypeCode = null; // 产品分类编码
+  productTypeId = null; // 产品分类 id
+  productTypeName = null; // 产品分类名
+
+  unitId = null; // 规格 id
+  unitName = null; // 规格名称
+  unitIds = null; // 可选规格 id 列表
+  unitNames = null; // 可选规格名称列表
+
+  inventory = null; // 库存
+
+  init(product) {
+    const {
+      addrType = null,
+      address = null,
+      businessProductId = null,
+      id = null,
+      myProductName = null,
+      productName = null,
+      uploadLogoId = null,
+      productTypeCode = null,
+      productTypeId = null,
+      productTypeName = null,
+      unitId = null,
+      unitName = null,
+      unitIds = null,
+      unitNames = null,
+      inventory = null,
+    } = product;
+
+    this.addrType = addrType;
+    this.address = address;
+    this.businessProductId = businessProductId || id;
+    this.myProductName = myProductName;
+    this.productName = productName;
+    this.uploadLogoId = uploadLogoId;
+    this.productTypeCode = productTypeCode;
+    this.productTypeId = productTypeId;
+    this.productTypeName = productTypeName;
+    this.unitId = unitId;
+    this.unitName = unitName;
+    this.unitIds = unitIds;
+    this.unitNames = unitNames;
+    this.inventory = inventory;
+  }
+
+  validate() {
+    const errMsg = super.validate();
+    if (errMsg) {
+      return errMsg;
+    }
+
+    return null;
+  }
+
+  format() {
+    return {
+      ...super.format(),
+    };
+  }
+};
+
+export { FarmProduct };

@@ -1,0 +1,8 @@
+<view class="mobile-app-container {{ needSafeBottom ? 'with-safe-bottom' : '' }}">
+  <view class="entry-container waterfall">
+    <view bindtap="enter" data-url="{{ item.url }}" class="entry" wx:for="{{ entryList }}" wx:key="url">
+      <image wx:if="{{ item.cover }}" src="{{ item.cover }}"></image>
+      <text>{{ item.label }}</text>
+    </view>
+  </view>
+</view>
